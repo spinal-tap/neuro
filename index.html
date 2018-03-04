@@ -1,22 +1,18 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="hr">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
 	
-	<title>Nalaz :: Forma</title>
+	<title>Nalaz</title>
 
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-	<style>pre {white-space: pre-wrap;}</style>
-
+    	
+	<!-- Custom CSS -->
+	<style>
+		pre {white-space: pre-wrap;}
+	</style>
 </head>
 
 <body onload="time()" class="bg-light">
@@ -26,7 +22,6 @@
 	</div>
 	<div class="container my-4">
 		<form id="rendered-form">
-		<div class="rendered-form">
 			<div class="form-group row">
 				<label for="text-pacijent" class="col-sm-2 col-form-label">Pacijent</label>
 				<div class="col-sm-10"><input type="text" class="form-control" name="text-pacijent" id="text-pacijent"></div>
@@ -52,64 +47,85 @@
 				<label for="text-razlog" class="col-sm-2 col-form-label">Razlog dolaska</label>
 				<div class="col-sm-10"><input type="text" class="form-control" name="text-razlog" id="text-razlog"></div>
 			</div>
-			<div class="fb-textarea form-group field-textarea-sadanja"><label for="textarea-sadanja" class="fb-textarea-label">Sadašnja bolest</label><textarea class="form-control" name="textarea-sadanja" rows="5" id="textarea-sadanja"></textarea></div>
-			<div class="fb-textarea form-group field-textarea-dosadasnje"><label for="textarea-dosadasnje" class="fb-textarea-label">Dosadašnje bolesti</label><textarea class="form-control" name="textarea-dosadasnje" rows="5" id="textarea-dosadasnje"></textarea></div>
-			<div class="fb-textarea form-group field-textarea-terapija"><label for="textarea-terapija" class="fb-textarea-label">Kronična terapija</label><textarea  class="form-control" name="textarea-terapija" rows="2" id="textarea-terapija"></textarea></div>
+			<div class="form-group"><label for="textarea-sadanja">Sadašnja bolest</label><textarea class="form-control" name="textarea-sadanja" rows="5" id="textarea-sadanja"></textarea></div>
+			<div class="form-group"><label for="textarea-dosadasnje">Dosadašnje bolesti</label><textarea class="form-control" name="textarea-dosadasnje" rows="5" id="textarea-dosadasnje"></textarea></div>
+			<div class="form-group"><label for="textarea-terapija">Kronična terapija</label><textarea  class="form-control" name="textarea-terapija" rows="2" id="textarea-terapija"></textarea></div>
 			<div class="form-group row">
 				<label for="text-alergije" class="col-sm-2 col-form-label">Alergije na lijekove</label>
 				<div class="col-sm-10"><input type="text" class="form-control" name="text-alergije" id="text-alergije"></div>
 			</div>
-			<div class="fb-textarea form-group field-textarea-nstatus"><label for="textarea-nstatus" class="fb-textarea-label">Neurološki status</label>
+			<div class="form-group"><label for="textarea-nstatus">Neurološki status</label>
 			<div class="btn-group btn-group-sm" role="group" aria-label="Nrl status">
 				<button type="button" class="btn btn-secondary" onclick="mnstatus()">M</button>
 				<button type="button" class="btn btn-secondary" onclick="znstatus()">Ž</button>
 				<button type="button" class="btn btn-secondary" onclick="lnstatus()">leđa</button>
 			</div> <textarea  class="form-control" name="textarea-nstatus" rows="6" id="textarea-nstatus"></textarea></div>
-			<div class="fb-textarea form-group field-textarea-sstatus"><label for="textarea-sstatus" class="fb-textarea-label">Somatski status</label>
+			<div class="form-group"><label for="textarea-sstatus">Somatski status</label>
 			<div class="btn-group btn-group-sm" role="group" aria-label="Nrl status">
 				<button type="button" class="btn btn-secondary" onclick="ohbpssstatus()">OHBP</button>
 				<button type="button" class="btn btn-secondary" onclick="hnassstatus()">HNA</button>
 			</div><textarea class="form-control" name="textarea-sstatus" rows="2" id="textarea-sstatus"></textarea></div>
-			<div class="fb-textarea form-group field-textarea-zakljucak"><label for="textarea-zakljucak" class="fb-textarea-label">Zaključak</label><textarea type="textarea" class="form-control" name="textarea-zakljucak" rows="5" id="textarea-zakljucak"></textarea></div>
-		</div>
+			<div class="form-group"><label for="textarea-zakljucak">Zaključak</label><textarea type="textarea" class="form-control" name="textarea-zakljucak" rows="5" id="textarea-zakljucak"></textarea></div>
 		</form>
-		<button class="btn btn-info" name="button-zavrsi" style="info" id="button-zavrsi" onclick="zavrsi()" data-toggle="modal" data-target=".bd-example-modal-lg">Završi</button>
-		<button class="btn btn-info float-right" name="button-novi" style="info" id="button-novi" onclick="reloadPage()">Novi nalaz</button>
+		
+		<button class="btn btn-info" name="button-zavrsi" style="info" id="button-zavrsi" onclick="zavrsi()" data-toggle="modal" data-target=".bd-nalaz-modal-lg">Završi</button>
+		<button class="btn btn-danger float-right" name="button-novi" style="info" id="button-novi" data-toggle="modal" data-target=".bd-zatvori-modal-sm">Novi nalaz</button>
 	</div>
 	
-	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
+	<div class="modal fade bd-nalaz-modal-lg" tabindex="-1" role="dialog" aria-labelledby="Nalaz" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
 			<div class="modal-content">
-				<div class="container my-4">	
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title" id="rpacijent"></h5>
-							<h6 class="card-subtitle mb-2 text-muted">Anamneza i status</h6>
-							<div id="selectablenal" onclick="selectText('selectablenal')">
+				<div class="modal-header">
+				<h5 class="modal-title" id="rpacijent"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				<div class="modal-body">
+					<h6>Anamneza i status</h6>
+					<div id="snalaz" onclick="selectText('snalaz')">
 <pre><span id="rpregled"></span>
 
 Razlog dolaska: <span id="rrazlog"></span>
 <span id="rsadasnja"></span>
-
 <span id="rdosadasnja"></span>
 Kronična terapija: <span id="rterapija"></span> 
 Alergije na lijekove: <span id="ralergije"></span>
 
 Neurološki status: <span id="rnstatus"></span>
 <span id="rsstatus"></span></pre>
-							</div>
-							<hr>
-							<h6 class="card-subtitle mb-2 text-muted">Zaključak</h6>
-							<div id="selectablezak" onclick="selectText('selectablezak')">
+					</div>
+					<hr>
+					<h6>Zaključak</h6>
+					<div id="szakljucak" onclick="selectText('szakljucak')">
 <pre><span id="rzakljucak"></span></pre>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div class="modal fade bd-zatvori-modal-sm" tabindex="-1" role="dialog" aria-labelledby="Novi dokument" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header"><h5 class="modal-title">Upozorenje!</h5></div>
+				<div class="modal-body">
+					<p>Da li želite izbrisati nalaz te početi novi?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Vrati se</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal"  onclick="reloadPage()">Novi nalaz</button>
+				</div>
+			</div>
 		</div>
 	</div>
 
+	<!-- Bootstrap JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!--  Custom JavaScript -->
 	<script>
 	// završava nalaz, šalje tekst u <pre>
 	function zavrsi() {
@@ -188,6 +204,16 @@ Neurološki status: <span id="rnstatus"></span>
 	function clearContents() {
 		document.getElementById("textarea-sstatus").value = "";
 	}
+	
+	
+	/*window.onbeforeunload = function (e) {
+	e = e || window.event;
+	if (e) {
+		e.returnValue = 'Sure?';
+	}
+	return 'Sure?';
+	}*/
+	
 	</script>
 	
 </body>
