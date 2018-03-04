@@ -29,36 +29,48 @@
 		<div class="rendered-form">
 			<div class="form-group row">
 				<label for="text-pacijent" class="col-sm-2 col-form-label">Pacijent</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" name="text-pacijent" id="text-pacijent">
-				</div>
+				<div class="col-sm-10"><input type="text" class="form-control" name="text-pacijent" id="text-pacijent"></div>
 			</div>
 			<div class="form-group row">  
 				<label for="radio-group-pregled" class="fb-radio-group-label col-sm-2 col-form-label">Pregled</label>
 				<div class="radio-group col-sm-10">
-					<div class="form-check form-check-inline"><input name="radio-group-pregled" id="radio-group-pregled-0" value="Prvi pregled" type="radio"><label for="radio-group-pregled-0"> prvi</label></div>
-					<div class="form-check form-check-inline"><input name="radio-group-pregled" id="radio-group-pregled-1" value="Kontrolni pregled" type="radio"><label for="radio-group-pregled-1"> kontrolni</label></div>
-					<div class="form-check form-check-inline"><input name="radio-group-pregled" id="radio-group-pregled-2" value="HITNA NEUROLOŠKA AMBULANTA" type="radio"><label for="radio-group-pregled-2">HNA</label></div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="radio-group-pregled" id="radio-group-pregled-0" value="Prvi pregled">
+						<label for="radio-group-pregled-0"> prvi</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="radio-group-pregled" id="radio-group-pregled-1" value="Kontrolni pregled">
+						<label for="radio-group-pregled-1"> kontrolni</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="radio-group-pregled" id="radio-group-pregled-2" value="HITNA NEUROLOŠKA AMBULANTA">
+						<label for="radio-group-pregled-2">HNA</label>
+					</div>
 				</div>
 			</div>
-			<div class="fb-text form-group field-text-razlog"><label for="text-razlog" class="fb-text-label">Razlog dolaska</label><input type="text" class="form-control" name="text-razlog" id="text-razlog"></div>
-			<div class="fb-textarea form-group field-textarea-sadanja"><label for="textarea-sadanja" class="fb-textarea-label">Sadašnja bolest</label><textarea type="textarea" class="form-control" name="textarea-sadanja" rows="5" id="textarea-sadanja"></textarea></div>
-			<div class="fb-textarea form-group field-textarea-dosadasnje"><label for="textarea-dosadasnje" class="fb-textarea-label">Dosadašnje bolesti</label><textarea type="textarea" class="form-control" name="textarea-dosadasnje" rows="5" id="textarea-dosadasnje"></textarea></div>
-			<div class="fb-textarea form-group field-textarea-terapija"><label for="textarea-terapija" class="fb-textarea-label">Kronična terapija</label><textarea type="textarea" class="form-control" name="textarea-terapija" rows="2" id="textarea-terapija">Kronična terapija: </textarea></div>
-			<div class="fb-text form-group field-text-alergije"><label for="text-alergije" class="fb-text-label">Alergije</label><input type="text" class="form-control" name="text-alergije" id="text-alergije" value="Alergije na lijekove: "></div>
+			<div class="form-group row">
+				<label for="text-razlog" class="col-sm-2 col-form-label">Razlog dolaska</label>
+				<div class="col-sm-10"><input type="text" class="form-control" name="text-razlog" id="text-razlog"></div>
+			</div>
+			<div class="fb-textarea form-group field-textarea-sadanja"><label for="textarea-sadanja" class="fb-textarea-label">Sadašnja bolest</label><textarea class="form-control" name="textarea-sadanja" rows="5" id="textarea-sadanja"></textarea></div>
+			<div class="fb-textarea form-group field-textarea-dosadasnje"><label for="textarea-dosadasnje" class="fb-textarea-label">Dosadašnje bolesti</label><textarea class="form-control" name="textarea-dosadasnje" rows="5" id="textarea-dosadasnje"></textarea></div>
+			<div class="fb-textarea form-group field-textarea-terapija"><label for="textarea-terapija" class="fb-textarea-label">Kronična terapija</label><textarea  class="form-control" name="textarea-terapija" rows="2" id="textarea-terapija"></textarea></div>
+			<div class="form-group row">
+				<label for="text-alergije" class="col-sm-2 col-form-label">Alergije na lijekove</label>
+				<div class="col-sm-10"><input type="text" class="form-control" name="text-alergije" id="text-alergije"></div>
+			</div>
 			<div class="fb-textarea form-group field-textarea-nstatus"><label for="textarea-nstatus" class="fb-textarea-label">Neurološki status</label>
 			<div class="btn-group btn-group-sm" role="group" aria-label="Nrl status">
 				<button type="button" class="btn btn-secondary" onclick="mnstatus()">M</button>
 				<button type="button" class="btn btn-secondary" onclick="znstatus()">Ž</button>
 				<button type="button" class="btn btn-secondary" onclick="lnstatus()">leđa</button>
-			</div> <textarea type="textarea" class="form-control" name="textarea-nstatus" rows="6" id="textarea-nstatus">Neurološki status: </textarea></div>
+			</div> <textarea  class="form-control" name="textarea-nstatus" rows="6" id="textarea-nstatus"></textarea></div>
 			<div class="fb-textarea form-group field-textarea-sstatus"><label for="textarea-sstatus" class="fb-textarea-label">Somatski status</label>
 			<div class="btn-group btn-group-sm" role="group" aria-label="Nrl status">
 				<button type="button" class="btn btn-secondary" onclick="ohbpssstatus()">OHBP</button>
 				<button type="button" class="btn btn-secondary" onclick="hnassstatus()">HNA</button>
-			</div><textarea type="textarea" class="form-control" name="textarea-sstatus" rows="2" id="textarea-sstatus"></textarea></div>
+			</div><textarea class="form-control" name="textarea-sstatus" rows="2" id="textarea-sstatus"></textarea></div>
 			<div class="fb-textarea form-group field-textarea-zakljucak"><label for="textarea-zakljucak" class="fb-textarea-label">Zaključak</label><textarea type="textarea" class="form-control" name="textarea-zakljucak" rows="5" id="textarea-zakljucak"></textarea></div>
-
 		</div>
 		</form>
 		<button class="btn btn-info" name="button-zavrsi" style="info" id="button-zavrsi" onclick="zavrsi()" data-toggle="modal" data-target=".bd-example-modal-lg">Završi</button>
@@ -68,35 +80,33 @@
 	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-	
-	<div class="container my-4">	
-		<div class="card">
-			<div class="card-body">
-			<h5 class="card-title" id="rpacijent"></h5>
-			<h6 class="card-subtitle mb-2 text-muted">Anamneza i status</h6>
-				<div id="selectablenal" onclick="selectText('selectablenal')">
+				<div class="container my-4">	
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title" id="rpacijent"></h5>
+							<h6 class="card-subtitle mb-2 text-muted">Anamneza i status</h6>
+							<div id="selectablenal" onclick="selectText('selectablenal')">
 <pre><span id="rpregled"></span>
 
-<span id="rrazlog"></span>
+Razlog dolaska: <span id="rrazlog"></span>
 <span id="rsadasnja"></span>
 
 <span id="rdosadasnja"></span>
-<span id="rterapija"></span>. <span id="ralergije"></span>
+Kronična terapija: <span id="rterapija"></span> 
+Alergije na lijekove: <span id="ralergije"></span>
 
-<span id="rnstatus"></span>
+Neurološki status: <span id="rnstatus"></span>
 <span id="rsstatus"></span></pre>
-				</div>
-				<hr>
-				<h6 class="card-subtitle mb-2 text-muted">Zaključak</h6>
-				<div id="selectablezak" onclick="selectText('selectablezak')">
+							</div>
+							<hr>
+							<h6 class="card-subtitle mb-2 text-muted">Zaključak</h6>
+							<div id="selectablezak" onclick="selectText('selectablezak')">
 <pre><span id="rzakljucak"></span></pre>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-			</div>
 		</div>
 	</div>
 
@@ -175,12 +185,10 @@
 		location.reload();
 		window.scrollTo(0, 0);
 	}
-	
 	function clearContents() {
 		document.getElementById("textarea-sstatus").value = "";
-
 	}
+	</script>
 	
-</script>
 </body>
 </html>
