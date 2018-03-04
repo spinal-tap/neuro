@@ -1,0 +1,186 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<title>Nalaz :: Forma</title>
+
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<style>pre {white-space: pre-wrap;}</style>
+
+</head>
+
+<body onload="time()" class="bg-light">
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+		<h5 class="my-0 mr-md-auto font-weight-normal">Nalaz</h5>
+		<span class="navbar-text">Početak pregleda: <span id="time" class="font-weight-bold"></span></span>
+	</div>
+	<div class="container my-4">
+		<form id="rendered-form">
+		<div class="rendered-form">
+			<div class="form-group row">
+				<label for="text-pacijent" class="col-sm-2 col-form-label">Pacijent</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="text-pacijent" id="text-pacijent">
+				</div>
+			</div>
+			<div class="form-group row">  
+				<label for="radio-group-pregled" class="fb-radio-group-label col-sm-2 col-form-label">Pregled</label>
+				<div class="radio-group col-sm-10">
+					<div class="form-check form-check-inline"><input name="radio-group-pregled" id="radio-group-pregled-0" value="Prvi pregled" type="radio"><label for="radio-group-pregled-0"> prvi</label></div>
+					<div class="form-check form-check-inline"><input name="radio-group-pregled" id="radio-group-pregled-1" value="Kontrolni pregled" type="radio"><label for="radio-group-pregled-1"> kontrolni</label></div>
+					<div class="form-check form-check-inline"><input name="radio-group-pregled" id="radio-group-pregled-2" value="HITNA NEUROLOŠKA AMBULANTA" type="radio"><label for="radio-group-pregled-2">HNA</label></div>
+				</div>
+			</div>
+			<div class="fb-text form-group field-text-razlog"><label for="text-razlog" class="fb-text-label">Razlog dolaska</label><input type="text" class="form-control" name="text-razlog" id="text-razlog"></div>
+			<div class="fb-textarea form-group field-textarea-sadanja"><label for="textarea-sadanja" class="fb-textarea-label">Sadašnja bolest</label><textarea type="textarea" class="form-control" name="textarea-sadanja" rows="5" id="textarea-sadanja"></textarea></div>
+			<div class="fb-textarea form-group field-textarea-dosadasnje"><label for="textarea-dosadasnje" class="fb-textarea-label">Dosadašnje bolesti</label><textarea type="textarea" class="form-control" name="textarea-dosadasnje" rows="5" id="textarea-dosadasnje"></textarea></div>
+			<div class="fb-textarea form-group field-textarea-terapija"><label for="textarea-terapija" class="fb-textarea-label">Kronična terapija</label><textarea type="textarea" class="form-control" name="textarea-terapija" rows="2" id="textarea-terapija">Kronična terapija: </textarea></div>
+			<div class="fb-text form-group field-text-alergije"><label for="text-alergije" class="fb-text-label">Alergije</label><input type="text" class="form-control" name="text-alergije" id="text-alergije" value="Alergije na lijekove: "></div>
+			<div class="fb-textarea form-group field-textarea-nstatus"><label for="textarea-nstatus" class="fb-textarea-label">Neurološki status</label>
+			<div class="btn-group btn-group-sm" role="group" aria-label="Nrl status">
+				<button type="button" class="btn btn-secondary" onclick="mnstatus()">M</button>
+				<button type="button" class="btn btn-secondary" onclick="znstatus()">Ž</button>
+				<button type="button" class="btn btn-secondary" onclick="lnstatus()">leđa</button>
+			</div> <textarea type="textarea" class="form-control" name="textarea-nstatus" rows="6" id="textarea-nstatus">Neurološki status: </textarea></div>
+			<div class="fb-textarea form-group field-textarea-sstatus"><label for="textarea-sstatus" class="fb-textarea-label">Somatski status</label>
+			<div class="btn-group btn-group-sm" role="group" aria-label="Nrl status">
+				<button type="button" class="btn btn-secondary" onclick="ohbpssstatus()">OHBP</button>
+				<button type="button" class="btn btn-secondary" onclick="hnassstatus()">HNA</button>
+			</div><textarea type="textarea" class="form-control" name="textarea-sstatus" rows="2" id="textarea-sstatus"></textarea></div>
+			<div class="fb-textarea form-group field-textarea-zakljucak"><label for="textarea-zakljucak" class="fb-textarea-label">Zaključak</label><textarea type="textarea" class="form-control" name="textarea-zakljucak" rows="5" id="textarea-zakljucak"></textarea></div>
+
+		</div>
+		</form>
+		<button class="btn btn-info" name="button-zavrsi" style="info" id="button-zavrsi" onclick="zavrsi()" data-toggle="modal" data-target=".bd-example-modal-lg">Završi</button>
+		<button class="btn btn-info float-right" name="button-novi" style="info" id="button-novi" onclick="reloadPage()">Novi nalaz</button>
+	</div>
+	
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+	
+	<div class="container my-4">	
+		<div class="card">
+			<div class="card-body">
+			<h5 class="card-title" id="rpacijent"></h5>
+			<h6 class="card-subtitle mb-2 text-muted">Anamneza i status</h6>
+				<div id="selectablenal" onclick="selectText('selectablenal')">
+<pre><span id="rpregled"></span>
+
+<span id="rrazlog"></span>
+<span id="rsadasnja"></span>
+
+<span id="rdosadasnja"></span>
+<span id="rterapija"></span>. <span id="ralergije"></span>
+
+<span id="rnstatus"></span>
+<span id="rsstatus"></span></pre>
+				</div>
+				<hr>
+				<h6 class="card-subtitle mb-2 text-muted">Zaključak</h6>
+				<div id="selectablezak" onclick="selectText('selectablezak')">
+<pre><span id="rzakljucak"></span></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+	// završava nalaz, šalje tekst u <pre>
+	function zavrsi() {
+		var pacijent = document.getElementById("rendered-form").elements.namedItem("text-pacijent").value;
+		document.getElementById("rpacijent").innerHTML = pacijent;
+		var pregled = document.getElementById("rendered-form").elements.namedItem("radio-group-pregled").value;
+		document.getElementById("rpregled").innerHTML = pregled;
+		var razlog = document.getElementById("rendered-form").elements.namedItem("text-razlog").value;
+		document.getElementById("rrazlog").innerHTML = razlog; 
+		var sadasnja = document.getElementById("rendered-form").elements.namedItem("textarea-sadanja").value;
+		document.getElementById("rsadasnja").innerHTML = sadasnja;		 
+		var dosadasnja = document.getElementById("rendered-form").elements.namedItem("textarea-dosadasnje").value;
+		document.getElementById("rdosadasnja").innerHTML = dosadasnja;
+		var terapija = document.getElementById("rendered-form").elements.namedItem("textarea-terapija").value;
+		document.getElementById("rterapija").innerHTML = terapija;
+		var alergije = document.getElementById("rendered-form").elements.namedItem("text-alergije").value;
+		document.getElementById("ralergije").innerHTML = alergije;
+		var nstatus = document.getElementById("rendered-form").elements.namedItem("textarea-nstatus").value;
+		document.getElementById("rnstatus").innerHTML = nstatus;
+		var sstatus = document.getElementById("rendered-form").elements.namedItem("textarea-sstatus").value;
+		document.getElementById("rsstatus").innerHTML = sstatus;
+		
+		var zakljucak = document.getElementById("rendered-form").elements.namedItem("textarea-zakljucak").value;
+		document.getElementById("rzakljucak").innerHTML = zakljucak;
+	}
+	
+	// označi tekst u <pre>
+	function selectText( containerid ) {
+        var node = document.getElementById( containerid );
+        if ( document.selection ) {
+            var range = document.body.createTextRange();
+            range.moveToElementText( node  );
+            range.select();
+        } else if ( window.getSelection ) {
+            var range = document.createRange();
+            range.selectNodeContents( node );
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange( range );
+        }
+    }
+	
+	// vrijeme početka 
+	function addZero(i) {
+		if (i < 10) { i = "0" + i;}
+		return i;
+	}
+	function time() {
+		var d = new Date();
+		var h = addZero(d.getHours());
+		var m =  addZero(d.getMinutes());
+		document.getElementById("time").innerHTML =  h + ":" + m;
+	}
+	
+	// predefinirani statusi
+	function mnstatus() {
+		document.getElementById('textarea-nstatus').value += "Pri svijesti, orjentiran. Govor uredan. Vratom ne koči. Lice bez asimetrije i ispada osjeta. Bulbomotorika ureda, bez nistagmusa. Zjenice izokorične, fotoreaktibilne. Bez ispada ostalih kranijskih živaca. Ekstremitete održava u AG položaju, GMS 5/5. MTR 2+ simetrični, patološke ne izazivam. Bez ispada površinskog osjeta. Hod uredan, Romberg održava, bez dismetrije. Sfinktere kontrolira.";
+	}
+	function znstatus() {
+		document.getElementById('textarea-nstatus').value += "Pri svijesti, orjentirana. Govor uredan. Vratom ne koči. Lice bez asimetrije i ispada osjeta. Bulbomotorika ureda, bez nistagmusa. Zjenice izokorične, fotoreaktibilne. Bez ispada ostalih kranijskih živaca. Ekstremitete održava u AG položaju, GMS 5/5. MTR 2+ simetrični, patološke ne izazivam. Bez ispada površinskog osjeta. Hod uredan, Romberg održava, bez dismetrije. Sfinktere kontrolira.";
+	}
+	function lnstatus() {
+		document.getElementById('textarea-nstatus').value += "Urednog stanja svijesti. Vratom ne koči. Donje ekstremitete održava u položaju po Mingazziniju, GMS 5/5. Plantarna i dorzalna fleksija stopala uredne. RPT 2+ simetrični, RAT 2+ simetrični, patološke ne izazivam. Lasegue obostrano negativan. Bez ispada površinskog osjeta. Hod uredan. Sfinktere kontrolira.";
+	}
+	function ohbpssstatus() {
+		document.getElementById('textarea-sstatus').value += "Somatski status: Kardiopulmonalno komp. Afeb. | EKG: ";
+	}
+	function hnassstatus() {
+		document.getElementById('textarea-sstatus').value += "Somatski status: Kardiopulmonalno komp. Afeb. | RR: | puls: | EKG: ";
+	}
+	
+	// page reload
+	function reloadPage() {	
+		location.reload();
+		window.scrollTo(0, 0);
+	}
+	
+	function clearContents() {
+		document.getElementById("textarea-sstatus").value = "";
+
+	}
+	
+</script>
+</body>
+</html>
