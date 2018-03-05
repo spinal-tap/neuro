@@ -68,8 +68,9 @@
 			<div class="form-group"><label for="textarea-zakljucak">Zaključak</label><textarea type="textarea" class="form-control" name="textarea-zakljucak" rows="5" id="textarea-zakljucak"></textarea></div>
 		</form>
 		
+		<button type="button" class="btn btn-success" name="button-spremi" style="info" id="button-spremi" onclick="spremi()">Spremi</button>
 		<button class="btn btn-info" name="button-zavrsi" style="info" id="button-zavrsi" onclick="zavrsi()" data-toggle="modal" data-target=".bd-nalaz-modal-lg">Završi</button>
-		<button class="btn btn-danger float-right" name="button-novi" style="info" id="button-novi" data-toggle="modal" data-target=".bd-zatvori-modal-sm">Novi nalaz</button>
+		<button class="btn btn-danger float-right" name="button-novi" style="info" id="button-novi" data-toggle="modal" data-target=".bd-zatvori-modal-sm">Novi nalaz</button> 
 	</div>
 	
 	<div class="modal fade bd-nalaz-modal-lg" tabindex="-1" role="dialog" aria-labelledby="Nalaz" aria-hidden="true">
@@ -101,6 +102,10 @@ Neurološki status: <span id="rnstatus"></span>
 <pre><span id="rzakljucak"></span></pre>
 					</div>
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" id="backbutton">Vrati se</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal"  onclick="reloadPage()">Obriši nalaz i otvori novi</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -127,29 +132,47 @@ Neurološki status: <span id="rnstatus"></span>
 
 	<!--  Custom JavaScript -->
 	<script>
-	// završava nalaz, šalje tekst u <pre>
+	
+	// učitaj localStorage
+	function citaj() {
+		document.getElementById("rpacijent").innerHTML = localStorage.getItem("spacijent");
+		document.getElementById("rpregled").innerHTML = localStorage.getItem("spregled");
+		document.getElementById("rrazlog").innerHTML = localStorage.getItem("srazlog");
+		document.getElementById("rsadasnja").innerHTML = localStorage.getItem("ssadasnja");
+		document.getElementById("rdosadasnja").innerHTML = localStorage.getItem("sdosadasnja");
+		document.getElementById("rterapija").innerHTML = localStorage.getItem("sterapija");
+		document.getElementById("ralergije").innerHTML = localStorage.getItem("salergije");
+		document.getElementById("rnstatus").innerHTML = localStorage.getItem("snstatus");
+		document.getElementById("rsstatus").innerHTML = localStorage.getItem("ssstatus");
+		document.getElementById("rzakljucak").innerHTML = localStorage.getItem("szakljucak");
+	}
+	// šalje tekst u localStorage
+	function spremi() {
+		localStorage.setItem("sppregled", "true");
+		localStorage.setItem("spacijent", document.getElementById("text-pacijent").value);
+		localStorage.setItem("spregled", document.getElementById("rendered-form").elements.namedItem("radio-group-pregled").value);
+		localStorage.setItem("srazlog", document.getElementById("text-razlog").value);
+		localStorage.setItem("ssadasnja", document.getElementById("textarea-sadanja").value);
+		localStorage.setItem("sdosadasnja", document.getElementById("textarea-dosadasnje").value);
+		localStorage.setItem("sterapija", document.getElementById("textarea-terapija").value);
+		localStorage.setItem("salergije", document.getElementById("text-alergije").value);
+		localStorage.setItem("snstatus", document.getElementById("textarea-nstatus").value);
+		localStorage.setItem("ssstatus", document.getElementById("textarea-sstatus").value);
+		localStorage.setItem("szakljucak", document.getElementById("textarea-zakljucak").value);
+	}
+	
+	/*$('#button-spremi').on('click', function() {
+		var $this = $(this);
+		$this.button('loading');
+		setTimeout(function() {
+		$this.button('reset');
+		}, 1000);
+	});*/
+	
+	// završava nalaz, šalje tekst u localStorage, otvara modal s učitanim lS
 	function zavrsi() {
-		var pacijent = document.getElementById("rendered-form").elements.namedItem("text-pacijent").value;
-		document.getElementById("rpacijent").innerHTML = pacijent;
-		var pregled = document.getElementById("rendered-form").elements.namedItem("radio-group-pregled").value;
-		document.getElementById("rpregled").innerHTML = pregled;
-		var razlog = document.getElementById("rendered-form").elements.namedItem("text-razlog").value;
-		document.getElementById("rrazlog").innerHTML = razlog; 
-		var sadasnja = document.getElementById("rendered-form").elements.namedItem("textarea-sadanja").value;
-		document.getElementById("rsadasnja").innerHTML = sadasnja;		 
-		var dosadasnja = document.getElementById("rendered-form").elements.namedItem("textarea-dosadasnje").value;
-		document.getElementById("rdosadasnja").innerHTML = dosadasnja;
-		var terapija = document.getElementById("rendered-form").elements.namedItem("textarea-terapija").value;
-		document.getElementById("rterapija").innerHTML = terapija;
-		var alergije = document.getElementById("rendered-form").elements.namedItem("text-alergije").value;
-		document.getElementById("ralergije").innerHTML = alergije;
-		var nstatus = document.getElementById("rendered-form").elements.namedItem("textarea-nstatus").value;
-		document.getElementById("rnstatus").innerHTML = nstatus;
-		var sstatus = document.getElementById("rendered-form").elements.namedItem("textarea-sstatus").value;
-		document.getElementById("rsstatus").innerHTML = sstatus;
-		
-		var zakljucak = document.getElementById("rendered-form").elements.namedItem("textarea-zakljucak").value;
-		document.getElementById("rzakljucak").innerHTML = zakljucak;
+		spremi();
+		citaj();
 	}
 	
 	// označi tekst u <pre>
@@ -196,24 +219,33 @@ Neurološki status: <span id="rnstatus"></span>
 		document.getElementById('textarea-sstatus').value += "Somatski status: Kardiopulmonalno komp. Afeb. | RR: | puls: | EKG: ";
 	}
 	
-	// page reload
+	// page reload + brisanje localStoragea
 	function reloadPage() {	
 		location.reload();
+		
 		window.scrollTo(0, 0);
-	}
-	function clearContents() {
-		document.getElementById("textarea-sstatus").value = "";
+		
+		localStorage.removeItem("sppregled");
+		localStorage.removeItem("spacijent");
+		localStorage.removeItem("spregled");
+		localStorage.removeItem("srazlog");
+		localStorage.removeItem("ssadasnja");
+		localStorage.removeItem("sdosadasnja");
+		localStorage.removeItem("sterapija");
+		localStorage.removeItem("salergije");
+		localStorage.removeItem("snstatus");
+		localStorage.removeItem("ssstatus");
+		localStorage.removeItem("szakljucak");
 	}
 	
-	
-	/*window.onbeforeunload = function (e) {
-	e = e || window.event;
-	if (e) {
-		e.returnValue = 'Sure?';
+	// ukoliko postoji nalaz koji nije pobrisan, otvara modal s lS
+	if (localStorage.getItem("sppregled") == "true") {
+		citaj();
+		document.getElementById("backbutton").style.display = "none";
+		$(document).ready(function () {
+			$('.bd-nalaz-modal-lg').modal('show');
+		});
 	}
-	return 'Sure?';
-	}*/
-	
 	</script>
 	
 </body>
