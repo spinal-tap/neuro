@@ -176,6 +176,10 @@ if (localStorage.getItem("sppregled") == "true") {
 	});
 }
 
+$('#kontrolaSel').click(function() {
+    $("#zadnjiPregleDiv").toggle(this.checked);
+});
+
 function demo() {
 	document.getElementById("text-pacijent").value = "Ivan Horvat";
 	document.getElementById("prvi").checked = true;
