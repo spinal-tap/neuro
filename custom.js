@@ -176,7 +176,7 @@ if (localStorage.getItem("sppregled") == "true") {
 	});
 }
 
-$('#kontrolaSel').click(function() {
+$('#kontrolni').click(function() {
     $("#zadnjiPregleDiv").toggle(this.checked);
 });
 
